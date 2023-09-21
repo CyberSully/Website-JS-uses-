@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 4 Part 2</title>
+    <style>
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        h2{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 40px;
+        }
+        label{
+            font-size: 20px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        span{
+            font-size: 22px;
+        }
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align-last: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+        tr:nth-child(odd){
+            background-color: mediumpurple;
+        }
+        caption{
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Homework 4 Part 2</h1>
+<h2>Learn about Compound Interest</h2>
+
+<script>
+    window.onload = function() {
+
+            let outputT = "";
+            let amount = 0;
+            let principle = 1000;
+
+            for (let interestR = .05; interestR < .08; interestR += .01) {
+                outputT += "<table><caption>Table for Interest Rate</caption><tr><th>Year</th><th>" +
+                    "Amount on Deposit</th><th>InterestRate</th></tr >"
+
+                for (let year = 1; year <= 5; year++) {
+                    amount = principle * (1 + interestR) ** year;
+                    outputT += "<tr><td>" + year + "</td><td>" + amount.toLocaleString('en-US', {style:'currency', currency:'USD'}) + "</td><td>" + interestR.toFixed(2) + "</td></tr>";
+                }
+                outputT += "</table><br>";
+            }
+        document.getElementById("tableOutput").innerHTML = outputT;
+    }
+</script>
+
+<div id="tableOutput"></div><br>
+
+<div id="links">
+    <a href="index.html">Return to Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="hw4.html">Return to Homework 4 Main Page </a>
+</div>
+</body>
+</html>

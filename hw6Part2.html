@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 6 Part 2</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        #myForm{
+            text-align-last: center;
+        }
+        p{
+            font-size: 20px;
+        }
+        label{
+            font-size: 25px;
+        }
+        #InputBox{
+            width: 600px;
+            height: 25px;
+        }
+    </style>
+    <script>
+        function stringChecker() {
+            let userString = document.getElementById("InputBox").value
+            userString = userString.toLowerCase();
+            let userChar = document.getElementById("CharBox").value.charAt(0);
+            userChar = userChar.toLowerCase();
+            let charAppearance = 0;
+
+            for (let i = 0;i<userString.length;i++){
+                if(userString.charAt(i)===userChar){
+                    charAppearance++;
+                }
+            }
+            if(charAppearance>0){
+                document.getElementById("tableOutput").innerHTML = ( "The character you searched for, " + userChar + ", appears " + charAppearance + " time(s)");
+            }
+            else{
+                let myText = "<html>\n";
+                myText += "<head>\n";
+                myText += "<title>Popup Window</title>\n";
+                myText += "</head>\n";
+                myText += "<body>\n";
+                myText += "<div style='margin:0 auto;'>\n";
+                myText += "<p><strong>Search character " + userChar + " not found in the content you typed</strong></p>\n";
+                myText += "<input type='button' value='Close Window' onclick='window.close()'>\n";
+                myText += "</div>\n";
+                myText += "</body>\n";
+                myText += "</html>";
+                let newWindow = window.open("","errorWindow","width=300px,height=100px,top=10,left=10");
+                newWindow.focus();
+                newWindow.document.write(myText);
+                newWindow.document.close();
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Objects Part 2 - Searching Strings for Occurrences</h1>
+<form id="myForm">
+    <div>
+        <label for="InputBox">Type any message that you please (maximum is 100 characters)</label><br>
+        <input id="InputBox" name="InputBox" type="text" maxlength="100" value=""/><br><br>
+    </div>
+
+    <div>
+        <label for="CharBox">Enter a character to search for how many times it appears</label><br>
+        <input id="CharBox" name="CharBox" type="text" maxlength="1" value=""/><br><br>
+    </div>
+
+    <div id="buttons">
+        <input type="button" value="Submit" id="submit" onclick="stringChecker()" >
+        <input type="reset" value="Clear Form" id="clear"><br><br>
+    </div>
+    <div id="tableOutput"></div><br><br><br>
+
+</form>
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw6.html">Return to Homework 6 Main Page</a></li>
+</div><br>
+</body>
+</html>

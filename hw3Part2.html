@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3 Part 2</title>
+    <style>
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            /*display: inline-block;*/
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        .inputs{
+            width: 250px; height: 20px
+        }
+        label{
+            font-size: 20px;
+        }
+        p{
+            font-size: 20px;
+        }
+        form{
+            text-align-last: center;
+        }
+        th{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: 20px;
+        }
+        .values{
+            text-align-last: right;
+        }
+
+        div.homeLink {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+        }
+        div.homeLinkhw3 {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+        }
+    </style>
+    <script>
+        function process() {
+            let item1, item2, item3, item4,item1T,item2T,item3T,item4T;
+            let baseS = 250;
+
+            item1 = document.forms["form"].elements["item1F"].value;
+            item2 = document.forms["form"].elements["item2F"].value;
+            item3 = document.forms["form"].elements["item3F"].value;
+            item4 = document.forms["form"].elements["item4F"].value;
+
+            item1 = parseInt(item1);
+            item2 = parseInt(item2);
+            item3 = parseInt(item3);
+            item4 = parseInt(item4);
+
+            item1T = item1*20.99;
+            item2T = item2*12.75;
+            item3T = item3*9.95;
+            item4T = item4*35.89;
+
+            let totals = item1T+item2T+item3T+item4T;
+            let totalEarnings = baseS + (totals *.09);
+
+            totalEarnings = totalEarnings.toFixed(2);
+            totals = totals.toFixed(2);
+
+
+            item1T = item1T.toFixed(2);
+            item2T = item2T.toFixed(2);
+            item3T = item3T.toFixed(2);
+            item4T = item4T.toFixed(2);
+
+
+            if (item1<0||item2<0||item3<0||item4<0){
+                document.getElementById("name").value = "Values must be 0 or larger!"
+            }
+            else{
+                document.getElementById("quantityItem1").value = item1;
+                document.getElementById("quantityItem2").value = item2;
+                document.getElementById("quantityItem3").value = item3;
+                document.getElementById("quantityItem4").value = item4;
+
+                document.getElementById("total$Item1").value = item1T;
+                document.getElementById("total$Item2").value = item2T;
+                document.getElementById("total$Item3").value = item3T;
+                document.getElementById("total$Item4").value = item4T;
+
+                document.getElementById("totalAmountSold").value = totals;
+                document.getElementById("totalWeeklyEarnings").value = totalEarnings;
+
+            }
+        }
+    </script>
+</head>
+<body>
+<h1 id = 'errorMessage'> Homework 3 Part 2</h1>
+<form id="form">
+    <div>
+        <label for="name">Sellers Name:</label><br>
+        <input id="name" name="name" type="text" class="inputs"><br><br>
+    </div>
+    <p>
+        Enter amount of each item sold by seller
+    </p>
+    <div>
+        <label for="item1F">Item 1:</label><br>
+        <input id="item1F" name="item1F" type="number" class="inputs"><br><br>
+    </div>
+    <div>
+        <label for="item2F">Item 2:</label><br>
+        <input id="item2F" name="item2F" type="number" class="inputs"><br><br>
+    </div>
+    <div>
+        <label for="item3F">Item 3:</label><br>
+        <input id="item3F" name="item3F" type="number" class="inputs"><br><br>
+    </div>
+    <div>
+        <label for="item4F">Item 4:</label><br>
+        <input id="item4F" name="item4F" type="number" class="inputs"><br><br>
+    </div>
+    <div>
+        <input type="button" value="Submit" id="submit" onclick="process()" >
+        <input type="reset" value="Clear Form" id="clear"><br><br>
+    </div>
+    <table class="center" id="tableID" >
+        <tr>
+            <th>Item# </th>
+            <th>Price </th>
+            <th>Quantity Sold </th>
+            <th>Total $</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>20.99</td>
+            <td>
+                <label for="quantityItem1"></label>
+                <input id="quantityItem1" class="values" name="quantityItem1" type="number" readonly>
+            </td>
+            <td>
+                <label for="total$Item1"></label>
+                <input id="total$Item1" class="values" name="total$Item1" type="number" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>12.75</td>
+            <td>
+                <label for="quantityItem2"></label>
+                <input id="quantityItem2" class="values" name="quantityItem2" type="number" readonly>
+            </td>
+            <td>
+                <label for="total$Item2"></label>
+                <input id="total$Item2" class="values" name="total$Item2" type="number" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>9.95</td>
+            <td>
+                <label for="quantityItem3"></label>
+                <input id="quantityItem3" class="values" name="quantityItem3" type="number" readonly>
+            </td>
+            <td>
+                <label for="total$Item3"></label>
+                <input id="total$Item3" class="values" name="total$Item3" type="number" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>35.89</td>
+            <td>
+                <label for="quantityItem4"></label>
+                <input id="quantityItem4" class="values" name="quantityItem4" type="number" readonly>
+            </td>
+            <td>
+                <label for="total$Item4"></label>
+                <input id="total$Item4" class="values" name="total$Item4" type="number" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">Total Amount Sold</td>
+            <td>
+                <label for="totalAmountSold"></label>
+                <input id="totalAmountSold" class="values" name="totalAmountSold" type="number"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">Total Weekly Earnings</td>
+            <td>
+                <label for="totalWeeklyEarnings"></label>
+                <input id="totalWeeklyEarnings" class="values" name="totalWeeklyEarnings" type="number" readonly>
+            </td>
+        </tr>
+    </table>
+</form><br><br>
+
+<div class="homeLink">
+    <a href="index.html">Return to Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<div class="homeLinkhw3">
+    <a href="hw3.html">Return to Homework 3 Main Page </a>
+</div>
+</body>
+</html>

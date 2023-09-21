@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 5 Part 1</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        #formData{
+            text-align-last: center;
+        }
+        p{
+            font-size: 20px;
+        }
+        #outputBox{
+            width: 250px;
+            height: 40px;
+        }
+    </style>
+    <script>
+        function processCheck(myForm) {
+            let movieChecked = false;
+            let radiosGood = false;
+            let checkboxGood = false;
+            let nameGood = false;
+            let myMovies = myForm.moviesArr.options[myForm.moviesArr.selectedIndex].value;
+            if(myMovies === "Select"){
+                document.getElementById("outputBox").value =  "You must select a movie!!";
+            }
+            else if (myMovies!=="Select"){
+                movieChecked = true;
+            }
+
+           let userName = document.getElementById("nameInput").value;
+            if (userName ===""){
+                document.getElementById("outputBox").value =  "You must enter a name";
+            }
+            if (userName.length>0){
+                nameGood = true;
+            }
+
+
+            let radios = document.getElementsByName('ageGroup');
+            for (let radio of radios)
+            {
+                if (radio.checked) {
+                    radiosGood = true;
+                }
+            }
+            if (!radiosGood){
+                document.getElementById("outputBox").value =  "You must select an age group";
+            }
+
+
+            if (document.getElementById('Firefox').checked){
+                checkboxGood = true;
+            }
+            if (document.getElementById('Safari').checked){
+                checkboxGood = true;
+            }
+            if (document.getElementById('Edge').checked){
+                checkboxGood = true;
+            }
+            if (document.getElementById('Chrome').checked){
+                checkboxGood = true;
+            }
+            if (!checkboxGood){
+                document.getElementById("outputBox").value = "You must select at least one browser";
+            }
+
+            if(checkboxGood && radiosGood && movieChecked && nameGood){
+                document.getElementById("outputBox").value =  "Thanks, all your data was submitted";
+            }
+
+        }
+
+
+
+
+
+    </script>
+</head>
+<body>
+<h1>
+    Homework 5 - Arrays Part 1
+</h1>
+<form id="formData">
+
+    <div>
+        <label for="nameInput">Enter Full Name:</label><br>
+        <input id="nameInput" name="nameInput" type="text" value=""/><br><br>
+    </div>
+
+    <div>
+    <p>Please select your age group:</p>
+    <input type="radio" id="young" name="ageGroup" value="Less than 21">
+    <label for="young">Less than 21</label>
+    <input type="radio" id="middleAge" name="ageGroup" value="Between 21 and 50">
+    <label for="middleAge">Between 21 and 50</label>
+    <input type="radio" id="old" name="ageGroup" value="Older than 50">
+    <label for="old">Older than 50</label><br><br><br>
+    </div>
+
+    <div>
+        <p>Please check which browsers you have used:</p>
+        <input type="checkbox" id="Firefox" name="browserGroup" value="Firefox">
+        <label for="Firefox">Firefox</label>
+        <input type="checkbox" id="Edge" name="browserGroup" value="Edge">
+        <label for="Edge">Edge</label>
+        <input type="checkbox" id="Chrome" name="browserGroup" value="Chrome">
+        <label for="Chrome">Chrome</label>
+        <input type="checkbox" id="Safari" name="browserGroup" value="Safari">
+        <label for="Safari">Safari</label><br><br>
+    </div>
+
+    <div id="movies">
+        <p>Select which type of movie you prefer</p>
+        <label for="movies">Choose a movie type:</label>
+        <select name="moviesArr" id="movieChoice">
+            <option value="Select">Select</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Documentary">Documentary</option>
+            <option value="Science Fiction">Science Fiction</option>
+        </select>
+    </div><br><br>
+
+    <div id="buttons">
+        <input type="button" value="Submit" id="submit" onclick="processCheck(this.form)" >
+        <input type="reset" value="Clear Form" id="clear"><br><br>
+    </div>
+
+    <div id="output">
+
+        <input id="outputBox" name="outputBox"  readonly><br><br>
+    </div>
+
+
+
+</form>
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw5.html">Return to Homework 5 Main Page</a></li>
+</div><br>
+</body>
+</html>

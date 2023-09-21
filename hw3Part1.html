@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3 Part 1</title>
+    <style>
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            /*display: inline-block;*/
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        body {
+            /*background-color: lightgray;*/
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        form{
+            text-align-last: center;
+        }
+        label{
+            font-size: 20px;
+        }
+        .outputBox{
+            width: 250px; height: 20px
+        }
+        #links{
+            text-align-last: center;
+        }
+    </style>
+    <script>
+        function process() {
+            let num1, num2, num3, num4, hwAvg,midtermS,finalS, partS, finalGradeNum,finalGradeLetter;
+            num1 = document.forms["form"].elements["hwAvg"].value;
+            num2 = document.forms["form"].elements["midTermScore"].value;
+            num3 = document.forms["form"].elements["finalScore"].value;
+            num4 = document.forms["form"].elements["partScore"].value;
+            hwAvg = parseInt(num1);
+            midtermS = parseInt(num2);
+            finalS = parseInt(num3);
+            partS = parseInt(num4);
+            finalGradeNum = (.5 * hwAvg) + (.2 * midtermS) + (.2 * finalS) + (.1 * partS);
+            finalGradeNum = finalGradeNum.toFixed(2);
+
+            if (hwAvg<0||hwAvg>100||midtermS<0||midtermS>100||finalS<0||finalS>100||partS<0||partS>100){
+                document.getElementById("finalResult").value =  "Wrong Entry!!";
+                document.getElementById("finalGrade").value = "Scores must be between 0-100!";
+            }
+
+            else if (finalGradeNum<=69){
+                document.getElementById("finalResult").value = finalGradeNum;
+                document.getElementById("finalGrade").value = "D or lower, you must retake course";
+            }
+            else if (finalGradeNum>=70 && finalGradeNum<80){
+                document.getElementById("finalResult").value =  finalGradeNum;
+                document.getElementById("finalGrade").value = "You received a C";
+            }
+            else if (finalGradeNum>=80 && finalGradeNum<90){
+                document.getElementById("finalResult").value =  finalGradeNum;
+                document.getElementById("finalGrade").value = "You received a B";
+            }
+            else if (finalGradeNum>=90 && finalGradeNum<=100){
+                document.getElementById("finalResult").value =  finalGradeNum;
+                document.getElementById("finalGrade").value = "You received a A";
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Student Grades</h1>
+<form id="form">
+    <div>
+        <label for="hwAvg">Homework Average:</label><br>
+        <input id="hwAvg" name="hwAvg" type="number"><br><br>
+    </div>
+    <div>
+        <label for="midTermScore">Mid-Term Exam Score:</label><br>
+        <input id="midTermScore" name="midTermScore" type="number"><br><br>
+
+    </div>
+    <div>
+        <label for="finalScore">Final Exam Score:</label><br>
+        <input id="finalScore" name="finalScore" type="number"><br><br>
+    </div>
+    <div>
+        <label for="partScore">Participation Score:</label><br>
+        <input id="partScore" name="partScore" type="number"><br><br>
+    </div>
+    <div>
+        <input type="button" value="Submit" id="submit" onclick="process()" >
+        <input type="reset" value="Clear" id="clear"><br><br>
+    </div>
+    <label for="finalResult">The Final Average Score is:</label><br>
+    <input id="finalResult" name="finalResult" class="outputBox" readonly><br><br>
+
+    <label for="finalGrade">Your Final Grade is:</label><br>
+    <input id="finalGrade" name="finalGrade"  class="outputBox" readonly><br><br>
+</form><br><br>
+<div id="links">
+<a href="index.html">Return to Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="hw3.html">Return to Homework 3 Main Page </a>
+</div>
+</body>
+</html>

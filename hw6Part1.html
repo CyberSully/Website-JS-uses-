@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 6 Part 1</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        #myForm{
+            text-align-last: center;
+        }
+        p{
+            font-size: 20px;
+        }
+        label{
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        function processCheck() {
+            let userNum = document.getElementById("numInput").value
+            userNum = parseFloat(userNum);
+            const numStr = String(userNum);
+            let errorMessage = "Number length after decimal must be at least 4 numbers, try again";
+            let errorMessage2 = "You must enter a number with a decimal and at least 4 numbers after it, try again";
+            let finalNumOutputs = "";
+            if (numStr.includes('.')) {
+                let numLength = numStr.split('.')[1].length;
+                if (numLength < 4){
+                    document.getElementById("tableOutput").innerHTML = errorMessage;
+                }
+                else{
+                    let numRoundInt = Math.round(userNum)
+                    let numSquare = Math.sqrt(userNum);
+                    let numSqRounded = Math.round(numSquare);
+                    let numRoundTens = Math.round(userNum * 10)/10;
+                    let numRoundHundreds = Math.round(userNum * 100)/100;
+                    let numRoundThousands = Math.round(userNum * 1000)/1000;
+
+                    finalNumOutputs += "You typed the number " + userNum + "<br><br>" +
+                        "The number rounded to an integer is "+numRoundInt.toFixed() + "<br><br>" +
+                    "The number rounded to tenths is " + numRoundTens.toFixed(1) + "<br><br>" +
+                    "The number rounded to hundredths is " + numRoundHundreds.toFixed(2) + "<br><br>" +
+                    "The number rounded to thousandths is " + numRoundThousands.toFixed(3) + "<br><br>" +
+                    "The number's square root then rounded to integer is " + numSqRounded.toFixed();
+
+                    document.getElementById("tableOutput").innerHTML = finalNumOutputs;
+                }
+            }
+            else{
+                document.getElementById("tableOutput").innerHTML = errorMessage2;
+            }
+        }
+        function clearForm() {
+            document.getElementById("myForm").reset();
+            document.getElementById("tableOutput").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+<h1>Objects Part 1 - Number Manipulation</h1>
+<form id="myForm">
+    <div>
+        <label for="numInput">Enter a number with 4 decimals:</label><br>
+        <input id="numInput" name="numInput" type="number" value=""/><br><br>
+    </div>
+    <div id="buttons">
+        <input type="button" value="Submit" id="submit" onclick="processCheck()" >
+        <input type="button" value="Clear Form" id="clear" onclick="clearForm()"><br><br>
+    </div>
+    <div id="tableOutput"></div><br><br><br>
+
+</form>
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw6.html">Return to Homework 6 Main Page</a></li>
+</div><br>
+</body>
+</html>

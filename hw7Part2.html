@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 7 Part 2</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        #myForm{
+            text-align-last: center;
+            text-align-all: center;
+        }
+        #cookiesActivePage{
+            font-size: 24px;
+            text-align-last: center;
+        }
+    </style>
+<script>
+     function getCookie(cName) {
+        let name = cName + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+
+    }
+    function checkCookie() {
+
+        let name = getCookie("name");
+        let username = getCookie("username");
+        if (name !== "" && username !== "") {
+            document.getElementById("cookiesActivePage").innerHTML="Welcome back " + name;
+            document.getElementById("myForm").style.display = "none";
+        } else {
+            document.getElementById("myForm").style.display = "normal";
+        }
+    }
+
+    function cookieSet() {
+        let name = document.getElementById("nameBox").value
+        let userName = document.getElementById("userNameBox").value
+        document.cookie = "name" + "=" + name + ";";
+        document.cookie = "username" + "=" + userName + ";";
+    }
+</script>
+<body onload="checkCookie()">
+<h1>A Pair of Cookies</h1>
+<div id="cookiesActivePage"><br><br></div>
+<form id="myForm">
+    <div>
+        <label for="nameBox">Enter your name:</label><br>
+        <input id="nameBox" name="nameBox" type="text" value=""/><br><br>
+    </div>
+    <div>
+        <label for="userNameBox">Enter your Username:</label><br>
+        <input id="userNameBox" name="userNameBox" type="text" value=""/><br><br>
+    </div>
+    <div id="buttons">
+        <input type="button" value="Submit" id="submit" onclick="cookieSet(this.form)" >
+        <input type="reset" value="Clear Form" id="clear"><br><br>
+    </div>
+</form>
+
+<div id="pageLoaded">
+
+</div>
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw7.html">Return to Homework 7 Main Page</a></li>
+</div><br>
+</body>
+</html>

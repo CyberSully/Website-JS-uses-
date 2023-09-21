@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 4 Part 1</title>
+    <style>
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        form{
+            text-align-last: center;
+        }
+        label{
+            font-size: 20px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        span{
+            font-size: 22px;
+        }
+        form{
+            text-align-last: center;
+        }
+        .Loops{
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<h1>Homework 4 Part 1</h1><br><br>
+<form id="formLoops">
+
+<div class="Loops">
+
+    <script>
+        var result = 1;
+        var total = 0;
+        var result2 = 1;
+        var total2 = 0;
+        document.write("The result of ")
+        for (let i = 5; i < 26; i += 4) {
+            result *= +i;
+            document.write(i + " * ");
+        }
+        result = result.toLocaleString();
+        document.write(" is " + result);
+        document.write("<br><br>");
+
+        document.write("The result of ")
+        for (let i = 5; i < 26; i += 4) {
+            total += i;
+            document.write(i + " + ");
+        }
+        total = total.toLocaleString();
+        document.write(" is " + total);
+        document.write("<br><br>");
+
+        let index = 3;
+        document.write("The result of ")
+        while (index <= 18){
+            document.write(index + " * ");
+            result2 *= +index;
+            index += 3;
+        }
+        result2 = result2.toLocaleString();
+        document.write(" is " + result2);
+        document.write("<br><br>");
+
+        let index2 = 3;
+        document.write("The result of ")
+        while (index2 <= 18){
+            document.write(index2 + " + ");
+            total2 += index2;
+            index2 += 3;
+        }
+        total2 = total2.toLocaleString();
+        document.write(" is " + total2);
+
+    </script>
+</div>
+    <br><br><br><br>
+
+<div id="links">
+    <a href="index.html">Return to Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="hw4.html">Return to Homework 4 Main Page </a>
+</div>
+</form>
+
+</body>
+</html>

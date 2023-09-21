@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+    }
+    a:link, a:visited{
+        background-color: mediumpurple;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 8px;
+        width: 150px;
+        height: 30px;
+    }
+    button{
+        background-color: mediumpurple;
+        color: white;
+        text-align: center;
+        border-radius: 8px;
+        width: 150px;
+        height: 30px;
+    }
+    a:hover{
+        background-color: darkseagreen;
+    }
+    button:hover{
+        background-color: darkseagreen;
+    }
+    h1{
+        color: black;
+        font-family: "Palatino Linotype",sans-serif;
+        text-align-last: center;
+        font-size: 50px;
+    }
+    h2{
+        color: black;
+        font-family: "Palatino Linotype",sans-serif;
+        text-align-last: center;
+        font-size: 30px;
+    }
+    #links{
+        text-align-last: center;
+    }
+    #myForm{
+        text-align-last: center;
+        text-align-all: center;
+    }
+    #myForm2{
+        text-align-last: center;
+        text-align-all: center;
+    }
+th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+table{
+    text-align-last: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+th,td {
+  padding: 5px;
+}
+p{
+    text-align-last: center;
+    text-align-all: center;
+    padding: 30px 200px 30px 200px;
+    font-size: 18px;
+}
+    ul{
+        list-style-type: none; /* Remove bullets */
+        font-size: 18px;
+
+    }
+</style>
+</head>
+<body>
+<h1>Homework 8 - AJAX Application</h1>
+<form id="myForm">
+    <button type="button" onclick="loadDoc()">Get CD collection</button>
+    <br><br>
+    <table id="demo"></table><br><br>
+</form>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    myFunction(this);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+<form id="myForm2">
+    <h2>Explanation of AJAX</h2>
+    <p>The function named loadDoc is being called on the button click, which first creates a variable
+    for a new http request to the server. That variable is then calling another function with "onload",which passes as a parameter
+    and calls the open and send, with the parameters for the xhttp being GET and the XML file that we are retrieving data from.
+    The request is passed in as a parameter, and the response is then passed back in the following function.</p>
+    <p>The XML response is then created in the next function,The responseXML property returns the server response as an XML DOM object.
+        Then uses the response data to create a table, retrieving data by tag names within the XML file.
+    Finally, the table is all put into a variable and becomes the inner HTML of the table already created in the HTML file.</p>
+
+    <h2>Featuring Rest API: IBM Watson Text to Speech</h2>
+    <ul>
+        <li>A really simple API that lets you seamlessly convert text to speech.</li>
+        <li>Real-time speech synthesis
+            Provide multilingual, natural-sounding support.</li>
+        <li>Leader in AI and ML
+            Benefit from IBM Research in AI and machine learning.</li>
+        <li>Requires HTTP Basic Auth,Token</li>
+        <li>Request format: URI Query String/CRUD</li>
+        <li>Response format: XML, Audio</li>
+        <li>Offers SSL Support</li>
+        <li>It’s 100% free for unlimited usage!</li>
+
+    </ul>
+</form>
+
+<div id="links">
+    <a href="https://www.ibm.com/cloud/watson-text-to-speech" target="_blank">More about this API!</a>
+    <br><br><br>
+    <a href="index.html">Return to Home Page</a>
+</div><br>
+</body>
+</html>

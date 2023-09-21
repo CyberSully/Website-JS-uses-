@@ -6,11 +6,35 @@
     <meta name="description" content="HW pages for Javascript CIS 114">
     <meta name="author" content="Brett Sullivan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework 2</title>
+    <title>Homework 2 Part 1</title>
     <style>
         body {
             /*background-color: lightgray;*/
             background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        h2{
+            color: #ff6e7f;
+        }
+        span{
+            text-align: center;
+        }
+        #firstSet{
+            font-family: "Times New Roman",sans-serif;
+            color: red;
+        }
+        #secondSet{
+            font-family: Arial, sans-serif;
+            color: blue;
+        }
+        #thirdSet{
+            font-family: Impact,sans-serif;
+            color: green;
         }
         a:link, a:visited {
             background-color: mediumpurple;
@@ -26,42 +50,31 @@
         a:hover{
             background-color: darkseagreen;
         }
-        h1{
-            color: black;
-            font-family: "Palatino Linotype",sans-serif;
+        .letters{
             text-align-last: center;
-            font-size: 50px;
         }
-        .descriptions{
-            font-size: 26px;
-            color: black;
-        }
-
-        #mainPage{
+        #links{
             text-align-last: center;
         }
     </style>
 </head>
 <body>
-<h1> Homework 2</h1>
-<div id="mainPage">
-<div>
-    <p class ="descriptions"><bold>Part 1 is an example of writing into a HTML document with JavaScript.</bold></p>
-    <a href="hw2Part1.html">Part 1 of Homework 2 </a></li>
-</div>
+<h1>
+    Homework 2 Part 1
+</h1>
+<div id="links">
+<a href="index.html">Return to Home Page</a></li>
+
 <p></p>
-<div>
-    <p class ="descriptions"><bold>Part 2 is a page to calculate multiple user inputs and show results using JavaScript.</bold></p>
-    <a href="hw2Part2.html">Part 2 of Homework 2 </a></li>
+
+<a href="hw2.html">Return to Homework 2 Main Page</a></li>
+</div><br>
+<div class="letters">
+<script>
+    document.write("<span id='firstSet'><strong>xy</strong> </span><span id='secondSet'>12 </span><span id='thirdSet'><em>89</em></span>")
+</script>
 </div>
-    <div>
-        <p class ="descriptions"><bold>Part 3 is a table to calculate exchange rates using JavaScript.</bold></p>
-        <a href="hw2ExtraCredit.html">Part 3 Extra Credit of Homework 2 </a></li>
-    </div>
-<p></p>
-<div>
-    <a href="index.html">Return to Home Page </a></li>
-</div>
-</div>
+
+
 </body>
 </html>

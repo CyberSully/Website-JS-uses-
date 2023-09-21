@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 7 Part 1</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #mainPage{
+            text-align-last: center;
+        }
+        #links{
+            text-align-last: center;
+        }
+        #myForm{
+            text-align-last: center;
+        }
+        .userSelections{
+            font-size: large;
+        }
+    </style>
+    <script>
+        function processChoice(myForm) {
+                let myFont = myForm.fontArr.options[myForm.fontArr.selectedIndex].value;
+
+                if(document.getElementById('underline').checked){
+                    document.getElementById('poem').style.textDecoration = 'underline'
+                }
+                if(!document.getElementById('underline').checked){
+                document.getElementById('poem').style.textDecoration = 'none'
+                 }
+
+                if(document.getElementById('bold').checked){
+                    document.getElementById('poem').style.fontWeight = "bold"
+                }
+                if(!document.getElementById('bold').checked){
+                document.getElementById('poem').style.fontWeight = "normal"
+                 }
+
+                if(document.getElementById('italic').checked){
+                document.getElementById('poem').style.fontStyle = "italic"
+                }
+                if(!document.getElementById('italic').checked){
+                document.getElementById('poem').style.fontStyle = "normal"
+                }
+
+                if (myFont ==="0.5rem"){
+                    document.getElementById('poem').style.fontSize = "0.5rem"
+                }
+                if (myFont ==="1rem"){
+                document.getElementById('poem').style.fontSize = "1rem"
+                }
+                if (myFont ==="1.5rem"){
+                document.getElementById('poem').style.fontSize = "1.5rem"
+                }
+                if (myFont ==="Select"){
+                document.getElementById('poem').style.fontSize = "medium"
+                }
+
+        }
+    </script>
+</head>
+<body id="mainPage">
+<h1>Choose your style choices for the Robert Frost Poem:</h1>
+<h1>The Road Not Taken</h1>
+<main id="poem">
+    <p>
+        Two roads diverged in a yellow wood,
+        And sorry I could not travel both
+        And be one traveler, long I stood
+        And looked down one as far as I could
+        To where it bent in the undergrowth;
+    </p><br>
+    <p>
+        Then took the other, as just as fair,
+        And having perhaps the better claim,
+        Because it was grassy and wanted wear;
+        Though as for that the passing there
+        Had worn them really about the same,
+    </p><br>
+    <p>
+        And both that morning equally lay
+        In leaves no step had trodden black.
+        Oh, I kept the first for another day!
+        Yet knowing how way leads on to way,
+        I doubted if I should ever come back.
+    </p><br>
+    <p>
+        I shall be telling this with a sigh
+        Somewhere ages and ages hence:
+        Two roads diverged in a wood, and I—
+        I took the one less traveled by,
+        And that has made all the difference.
+    </p><br><br>
+
+</main>
+<form id = 'myForm'>
+<div>
+    <p class="userSelections">Select a color for the background:</p>
+    <input type="radio" id="blue" name="colorChoice" value="Choose Blue" onclick="document.getElementById('poem').style.background = 'lightblue'">
+    <label for="blue" >Choose Light Blue</label>
+    <input type="radio" id="orange" name="colorChoice" value="Choose Orange" onclick="document.getElementById('poem').style.background = 'orange'">
+    <label for="orange" >Choose Orange</label>
+    <input type="radio" id="green" name="colorChoice" value="Choose Green" onclick="document.getElementById('poem').style.background = 'lightgreen'">
+    <label for="green">Choose Light Green</label>
+    <input type="radio" id="original" name="colorChoice" value="Original" onclick="document.getElementById('poem').style.background = 'linear-gradient(to right, #ff6e7f, #bfe9ff)'">
+    <label for="original" >Back to Original</label>
+
+    <br><br><br>
+</div>
+
+    <div>
+        <p class="userSelections">Select different styles to apply to page:</p>
+        <input type="checkbox" id="underline" name="fontGroup" value="underline" onclick="processChoice(this.form)">
+        <label for="underline">Underline</label>
+        <input type="checkbox" id="bold" name="fontGroup" value="bold" onclick="processChoice(this.form)">
+        <label for="bold">Bold</label>
+        <input type="checkbox" id="italic" name="fontGroup" value="italic" onclick="processChoice(this.form)">
+        <label for="italic">Italic</label>
+        <br><br>
+    </div>
+
+    <div id="fontSize">
+        <p class="userSelections">Select which font size to apply</p>
+        <label for="fontSize">Choose font-size:</label>
+        <select name="fontArr" id="fontChoice" onChange="processChoice(this.form)">
+            <option value="Select">Select</option>
+            <option value="0.5rem" >Small</option>
+            <option value="1rem" >Medium</option>
+            <option value="1.5rem" >Large</option>
+        </select>
+    </div><br><br>
+
+</form>
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw7.html">Return to Homework 7 Main Page</a></li>
+</div><br>
+</body>
+</html>

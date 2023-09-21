@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3 Part 3</title>
+    <style>
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        body {
+            /*background-color: lightgray;*/
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        form{
+            text-align-last: center;
+        }
+        div.homeLink {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+        }
+        div.homeLinkhw3 {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+        }
+        .inputs{
+            font-size: 20px;
+        }
+        label{
+            font-size: 20px;
+        }
+        .selection{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #output{
+            width: 350px;
+            height: 30px;
+        }
+    </style>
+    <script>
+        function fah2cel(){ //changes from fahrenheit to celsius
+            let input = document.forms["form"].elements["input1"].value;
+            let fahOutput =  5/9 * (input - 32);
+            fahOutput = fahOutput.toFixed();
+
+            document.getElementById("output").value = (input + " degrees Fahrenheit is " + fahOutput + " in Celsius");
+        }
+
+        function cel2fah(){ // changes from celsius to fahrenheit
+            let input = document.forms["form"].elements["input1"].value;
+            let celOutput =  (9/5 * input) + 32
+            celOutput = celOutput.toFixed();
+
+            document.getElementById("output").value = (input + " degrees Celsius is " + celOutput + " in Fahrenheit");
+        }
+    </script>
+</head>
+<body>
+<h1> Homework 3 Part 3 - Temp Convertor</h1><br><br><br>
+<form id="form">
+    <div>
+        <label for="input1"><strong><em>Enter degree to Calculate:</em></strong></label><br>
+        <input id="input1" name="input1" type="number" class="inputs"><br><br>
+    </div>
+    <p class="selection"><em>Select which temp-type you wish to display:</em> </p>
+    <div>
+        <input type="button" class="celsius" value="Celsius" onclick="fah2cel()" >
+        <input type="button" class="fahrenheit" value="Fahrenheit" onclick="cel2fah()"><br><br>
+    </div>
+    <div>
+        <label for="output"></label>
+        <input id="output" class="values" name="output" type="text"  readonly><br><br>
+    </div>
+    <input type="reset" value="Clear Form" id="clear">
+
+
+</form>
+<div class="homeLink">
+    <a href="index.html">Return to Home Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+<div class="homeLinkhw3">
+    <a href="hw3.html">Return to Homework 3 Main Page </a>
+</div>
+</body>
+</html>

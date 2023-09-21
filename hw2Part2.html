@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 2 Part 2</title>
+    <style>
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        body {
+            /*background-color: lightgray;*/
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        form{
+            text-align-last: center;
+        }
+        #links{
+            text-align-last: center;
+        }
+        label{
+            font-size: 20px;
+        }
+       
+    </style>
+
+</head>
+<body>
+<h1>
+    Homework 2 Part 2
+</h1>
+
+<form id="form">
+    <div>
+    <label for="input1">First Input:</label><br>
+    <input id="input1" name="input1" type="number"><br>
+    </div>
+    <div>
+    <label for="input2">Second Input:</label><br>
+    <input id="input2" name="Input2" type="number"><br>
+
+    </div>
+    <div>
+        <label for="input3">Third Input:</label><br>
+        <input id="input3" name="input3" type="number"><br><br>
+    </div>
+    <div>
+        <input type="button" value="Submit" id="submit" onclick="process()" >
+        <input type="reset" value="Clear" id="clear"><br><br>
+
+    </div>
+    <label for="sumResult">The Sum is:</label><br>
+    <input id="sumResult" name="prodBox"  readonly><br>
+
+    <label for="prodResult">The Product is:</label><br>
+    <input id="prodResult" name="prodBox"  readonly><br>
+
+    <label for="avResult">The Average is:</label><br>
+    <input id="avResult" name="avBox"  readonly><br>
+
+    <label for="smallResult">The Smallest is:</label><br>
+    <input id="smallResult" name="smallBox"  readonly><br>
+
+    <label for="largeResult">The Largest is:</label><br>
+    <input id="largeResult" name="largeBox"  readonly><br><br>
+
+</form>
+<div id="links">
+<div>
+    <a href="index.html">Return to Home Page</a></li>
+</div>
+<p></p>
+<div>
+    <a href="hw2.html">Return to Homework 2 Main Page</a></li>
+</div>
+</div>
+<script>
+    function process() {
+        let num1,num2,num3,sum,smallest,greatest,average,product,n1,n2,n3;
+        num1 = document.forms["form"].elements["input1"].value;
+        num2 = document.forms["form"].elements["input2"].value;
+        num3 = document.forms["form"].elements["input3"].value;
+        n1 = parseInt(num1);
+        n2 = parseInt(num2);
+        n3 = parseInt(num3);
+        sum = (n1+n2+n3);
+        average = (n1+n2+n3)/3;
+        product = (n1*n2*n3);
+        smallest = Math.min(n1, n2, n3);
+        greatest = Math.max(n1, n2, n3);
+        //alert("The sum of the numbers is " + sum "The average is:" average);
+
+        document.getElementById("sumResult").value =  sum;
+        document.getElementById("prodResult").value =  product;
+        document.getElementById("avResult").value =  average;
+        document.getElementById("smallResult").value =  smallest;
+        document.getElementById("largeResult").value =  greatest;
+    }
+</script>
+</body>
+</html>

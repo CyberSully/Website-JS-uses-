@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="description" content="HW pages for Javascript CIS 114">
+  <meta name="author" content="Brett Sullivan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HW 5 Part 3</title>
+  <style>
+    body {
+      background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+    }
+    a:link, a:visited {
+      background-color: mediumpurple;
+      color: white;
+      padding: 14px 25px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 8px;
+      width: 150px;
+      height: 30px;
+    }
+    a:hover{
+      background-color: darkseagreen;
+    }
+    h1{
+      color: black;
+      font-family: "Palatino Linotype",sans-serif;
+      text-align-last: center;
+      font-size: 50px;
+    }
+    #links{
+      text-align-last: center;
+    }
+    #formData{
+      text-align-last: center;
+    }
+    p{
+      font-size: 20px;
+    }
+
+  </style>
+  <script>
+    function findData() {
+      let userEntry = document.getElementById("stateInput").value
+      let stateAbb = "";
+      let stateName = "";
+      let stateCapital = "";
+      let statePop;
+      let finalOutput = "";
+      let errorMessage = "Sorry we could not find your state<br>We only have info for states AL,AK,AZ,AR,CA,and CO";
+      userEntry = userEntry.toUpperCase();
+      userEntry = userEntry.slice(0, 2);
+
+      let stateArr = [
+        ["AL", "Alabama","Montgomery",4903185],
+        ["AK", "Alaska","Juneau",731545],
+        ["AZ", "Arizona","Phoenix",7278717],
+        ["AR", "Arkansas","Little Rock",3017825],
+        ["CA", "California","Sacramento",39512223],
+        ["CO", "Colorado","Denver",5758736]
+      ];
+      for (let i = 0;i<stateArr.length;i++ ){
+
+        for (let y = 0;y<stateArr.length;y++ ){
+        if (stateArr[i][y]===userEntry){
+          stateAbb = stateArr[i][y];
+          stateName = stateArr[i][y+1];
+          stateCapital = stateArr[i][y+2];
+          statePop = stateArr[i][y+3];
+          finalOutput = "<strong>Here is the information for the state you searched!</strong><br><br>State Abbr is "+ stateAbb + "<br>State Name is "+ stateName +
+                  "<br>The Capital is " + stateCapital + "<br>Population is "+ statePop.toLocaleString ("en-US");
+        }
+        }
+
+      }
+
+      if(finalOutput.length<1){
+        document.getElementById("tableOutput").innerHTML = errorMessage;
+      }
+      else if (finalOutput.length>1){
+        document.getElementById("tableOutput").innerHTML = finalOutput;
+      }
+    }
+  </script>
+</head>
+<body>
+<h1>State Data from July/2019 census</h1>
+<form id="formData">
+  <div>
+    <label for="stateInput">Enter State to find:</label><br>
+    <input id="stateInput" name="stateInput" type="text" value=""/><br><br>
+  </div>
+  </div><br>
+  <input type="button" value="Go" onclick="findData()">
+  <input type="reset" value="Clear Form" id="clear"><br><br>
+  </div><br><br>
+
+  <div id="tableOutput"></div><br>
+</form><br><br>
+<div id="links">
+  <a href="index.html">Return to Home Page</a></li>
+  <p></p>
+  <a href="hw5.html">Return to Homework 5 Main Page</a></li>
+</div><br>
+</body>
+</html>

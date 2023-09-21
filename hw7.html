@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework 7</title>
     <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
         a:link, a:visited {
-            background-color: blue;
+            background-color: mediumpurple;
             color: white;
             padding: 14px 25px;
             text-align: center;
@@ -15,10 +22,47 @@
             width: 150px;
             height: 30px;
         }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #mainPage{
+            text-align-last: center;
+        }
+        .descriptions{
+            font-size: 26px;
+            color: black;
+        }
+        #cookieIMG{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 12px;
+        }
     </style>
 </head>
 <body>
-<h1> Homework 7: Coming Soon!</h1>
-<a href="index.html">Return to Home Page </a></li>
+<h1> Homework 7: Object Model, Cookies!</h1>
+<div id="mainPage">
+    <img src="cookieImage.jpg" alt="Cookie Image" width="300" height="200" id="cookieIMG">
+    <div>
+        <p class ="descriptions">Part 1 - Color and font manipulation </p>
+        <a href="hw7Part1.html">Part 1 of Homework 7 </a></li>
+    </div>
+    <p></p>
+    <div>
+        <p class ="descriptions">Part 2 - Baking Cookies</p>
+        <a href="hw7Part2.html">Part 2 of Homework 7 </a></li>
+    </div>
+    <p></p>
+    <div>
+        <a href="index.html">Return to Home Page </a></li>
+    </div>
+</div>
 </body>
 </html>

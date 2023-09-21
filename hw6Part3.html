@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 6 Part 3</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        #myForm{
+            text-align-last: center;
+        }
+        p{
+            font-size: 20px;
+        }
+        label{
+            font-size: 20px;
+        }
+        #errorOutput{
+            font-size: 25px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js">
+    </script>
+
+
+    <script>
+        $(document).ready(function ($){
+            $('#numInput').mask("(999) 999-9999")
+        });
+    </script>
+
+    <script>
+        function splitNum() {
+            let userNum = document.getElementById("numInput").value
+            let errorMessage = "You must type a full phone number with area code, you are missing digits, try again";
+
+            if(userNum.length<14){
+                document.getElementById("errorOutput").innerHTML = errorMessage;
+            }
+            else{
+                let phoneNrParts = userNum.match(/\((.*)\) (.*)-(.*)/);
+                let part1 = phoneNrParts[1];
+                let part2 = phoneNrParts[2];
+                let part3 = phoneNrParts[3];
+                document.getElementById("outputBox1").value = part1;
+                document.getElementById("outputBox2").value = part2;
+                document.getElementById("outputBox3").value = part3;
+            }
+        }
+        
+        function clearForm() {
+            document.getElementById("myForm").reset();
+            document.getElementById("errorOutput").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+<h1>Objects Part 3 - Phone Number Checker  </h1>
+<form id="myForm">
+    <div>
+        <label for="numInput">Enter a phone number:</label><br>
+        <input id="numInput" name="numInput" type="text" class="phoneNum"  /><br><br>
+    </div>
+
+    <div id="buttons">
+        <input type="button" value="Submit" id="submit" onclick="splitNum()" >
+        <input type="button" value="Clear Form" id="clear" onclick="clearForm()"><br><br>
+    </div>
+
+    <div id="errorOutput"></div><br><br><br>
+
+    <div id="output1">
+        <label for="outputBox1">Area Code:</label><br>
+    <input id="outputBox1" name="outputBox1"  readonly><br><br>
+    </div>
+
+    <div id="output2">
+        <label for="outputBox2">First 3 digits of number:</label><br>
+    <input id="outputBox2" name="outputBox2"  readonly><br><br>
+    </div>
+
+    <div id="output3">
+        <label for="outputBox3">Last 4 digits of number:</label><br>
+    <input id="outputBox3" name="outputBox3"  readonly><br><br>
+    </div><br><br>
+
+   
+
+</form>
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw6.html">Return to Homework 6 Main Page</a></li>
+</div><br>
+</body>
+</html>

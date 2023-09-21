@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="description" content="HW pages for Javascript CIS 114">
+    <meta name="author" content="Brett Sullivan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 5 Part 2</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+        }
+        a:link, a:visited {
+            background-color: mediumpurple;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+            height: 30px;
+        }
+        a:hover{
+            background-color: darkseagreen;
+        }
+        h1{
+            color: black;
+            font-family: "Palatino Linotype",sans-serif;
+            text-align-last: center;
+            font-size: 50px;
+        }
+        #links{
+            text-align-last: center;
+        }
+        p{
+            font-size: 20px;
+        }
+        #firstDropdown{
+            text-align-last: center;
+        }
+    </style>
+    <script>
+        function onChangeFun(myForm) {
+            let webChoice = myForm.firstDrop.options[myForm.firstDrop.selectedIndex].value;
+            window.open(webChoice, '_blank');
+        }
+
+        function onClickFun(myForm) {
+            let webChoice2 = myForm.secondDrop.options[myForm.secondDrop.selectedIndex].value;
+            window.open(webChoice2, '_blank');
+        }
+    </script>
+</head>
+<body>
+<h1>
+    Homework 5 - Arrays Part 2
+</h1><br><br>
+<form>
+<div id="firstDropdown">
+    <p>Select which website you want to visit (will be directed there upon selection)</p>
+    <select name="firstDrop" onchange="onChangeFun(this.form);">
+        <option>Choose website:</option>
+        <option value="https://discord.com/">Discord</option>
+        <option value="https://www.w3schools.com/">W3Schools</option>
+        <option value="https://stackoverflow.com/">StackOverflow</option>
+        <option value="https://www.typingclub.com/">TypingClub</option>
+    </select><br><br>
+
+    <div id="secondDropdown">
+        <p>Select another website you wish to visit (will be directed there upon clicking button below)</p>
+        <select name="secondDrop">
+            <option>Choose website:</option>
+            <option value="https://www.youtube.com/">YouTube</option>
+            <option value="https://www.netlify.com/">Netlify</option>
+            <option value="https://github.com/">GitHub</option>
+            <option value="https://duckduckgo.com/">DuckDuckGo</option>
+        </select>
+</div><br>
+    <input type="button" value="Go" onclick="onClickFun(this.form);">
+    <input type="reset" value="Clear Form" id="clear"><br><br>
+</div><br><br>
+</form>
+
+
+<div id="links">
+    <a href="index.html">Return to Home Page</a></li>
+    <p></p>
+    <a href="hw5.html">Return to Homework 5 Main Page</a></li>
+</div><br>
+</body>
+</html>
